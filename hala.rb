@@ -1,3 +1,4 @@
+
 class Hala
 
   def initialize (io=$stdin, chunk=64*1024)
