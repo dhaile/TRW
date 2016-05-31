@@ -1,14 +1,13 @@
-class TheRubyWay
+require "benchmark"
 
-  str = "Once upon\na time...\nThe End\n"
-  num = 0
-  str.each_line do |line|
-    num += 1
-    print "Line #{num}: #{line}"
-  end
+num_rows = 100000
+num_cols = 10
+data = Array.new(num_rows) { Array.new(num_cols) { "x"*1000 } }
 
-
-
+time = Benchmark.realtime do
+  csv = data.map do |row|
+    row.join(",")
+  end.join("\n")
 end
 
-TRW = TheRubyWay.new
+puts time.round(2)
